@@ -3,21 +3,26 @@ import requests
 import configparser
 import os
 
-if (os.path.exists('config.ini')):
+script_dir = (os.path.dirname(__file__))
+config_file = 'config.ini'
+config_path = os.path.join(script_dir, config_file)
+print (os.path.isfile(config_path))
+
+if (os.path.exists(config_path)):
     config = configparser.ConfigParser()
-    config.read('config.ini')
+    config.read(config_path)
     check_ip_url = config.get('URLS', 'IP_CHECK_URL')
     update_ip_url = config.get('URLS', 'UPDATE_URL')
     username = config.get('USER', 'USERNAME')
     password = config.get('USER', 'PASSWORD')
-    
+    hostname = config.get('HOST','HOSTNAME')
+    print (hostname)
 else:
     check_ip_url = 'https://www.myexternalip.com/raw'
     update_ip_url = 'https://dyndns.loopia.se'
     username = '#Put your username here#'
     password = '#Put your password here#'
-
-hostname = 'gynnar.se'
+    hostname = '#Put your hostname here#'
 
 dns_addr = socket.gethostbyname(hostname)           # Check the IP connected to the hostname by the DNS-system
 response = requests.get(check_ip_url)               # Check the external IP seen by the internet.
