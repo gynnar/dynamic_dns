@@ -1,0 +1,10 @@
+[USER]
+USERNAME: your_username
+PASSWORD: your_password
+
+[URLS]
+IP_CHECK_URL: https://www.myexternalip.com/raw
+UPDATE_URL: https://dyndns.loopia.se
+
+[HOST]
+HOSTNAME : your_domain
