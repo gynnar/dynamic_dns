@@ -15,7 +15,7 @@ The script needs a few settings:
 - An url to check the external IP of your system
 - An url to the DNS Service Providers update mechanism.
 
-These settings can either be provided in an external config.ini file or be hardtyped into the script itself. You pick...
+These settings can either be set in a config.ini file or be set in the else-clause of the script. You pick...
 Look at config.ini_example if you want to use it. 
 
 ### How to use it:
@@ -27,4 +27,4 @@ Make a record in your crontab to execute as often as you'd like.
 - #EXAMPLE LINE#
 
 
-I know there are fancier clients out there, but I just wanted to make one for myself.
+I know there are fancier and much more competent clients out there, but I just wanted to code a little myself.
