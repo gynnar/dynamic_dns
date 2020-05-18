@@ -24,7 +24,7 @@ Download it and place it in a folder you think is good.
 Edit the config file with your info.
 Make a record in your crontab to execute as often as you'd like. 
 - crontab -e
-- #EXAMPLE LINE#
+- 3 16 * * * python3 /*full_path_to_script*/dynamicdns_loopia.py
 
 
 I know there are fancier and much more competent clients out there, but I just wanted to code a little myself.
