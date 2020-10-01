@@ -19,6 +19,7 @@ import socket
 import requests
 import configparser
 import os
+import dns.resolver
 
 script_dir = (os.path.dirname(__file__))
 config_file = 'config.ini'
@@ -41,7 +42,13 @@ else:
     password = '#Put your password here#'
     hostname = '#Put your hostname here#'
 
-dns_addr = socket.gethostbyname(hostname)           # Check the IP connected to the hostname by the DNS-system
+# dns_addr = socket.gethostbyname(hostname)           # Check the IP connected to the hostname by the DNS-system
+my_resolver = dns.resolver.Resolver()
+my_resolver.nameservers = ['8.8.8.8']
+dns_addr = my_resolver.query(hostname)
+
+#############
+
 response = requests.get(check_ip_url)               # Check the external IP seen by the internet.
 str_response = str(response.content, 'utf-8')       # Stringifies the response to match the type of the dns-check
 
