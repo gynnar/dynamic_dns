@@ -19,6 +19,7 @@ import socket
 import requests
 import configparser
 import os
+import dns.resolver
 
 script_dir = (os.path.dirname(__file__))
 config_file = 'config.ini'
@@ -33,6 +34,7 @@ if (os.path.exists(config_path)):
     username = config.get('USER', 'USERNAME')
     password = config.get('USER', 'PASSWORD')
     hostname = config.get('HOST','HOSTNAME')
+    nameserver = config.get('DNS', 'SERVER')
 #    print (hostname)
 else:
     check_ip_url = 'https://www.myexternalip.com/raw'
@@ -40,8 +42,15 @@ else:
     username = '#Put your username here#'
     password = '#Put your password here#'
     hostname = '#Put your hostname here#'
+    nameserver = '8.8.8.8' # Using Googles DNS-server
+    
+# dns_addr = socket.gethostbyname(hostname)           # Check the IP connected to the hostname by the DNS-system
+my_resolver = dns.resolver.Resolver()
+my_resolver.nameservers = [nameserver]
+dns_addr = my_resolver.query(hostname)
 
-dns_addr = socket.gethostbyname(hostname)           # Check the IP connected to the hostname by the DNS-system
+#############
+
 response = requests.get(check_ip_url)               # Check the external IP seen by the internet.
 str_response = str(response.content, 'utf-8')       # Stringifies the response to match the type of the dns-check
 

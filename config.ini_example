@@ -8,3 +8,6 @@ UPDATE_URL: https://dyndns.loopia.se
 
 [HOST]
 HOSTNAME : your_domain
+
+[DNS]
+SERVER : 8.8.8.8
